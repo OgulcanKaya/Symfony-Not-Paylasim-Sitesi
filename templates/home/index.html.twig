@@ -1,0 +1,180 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %} {{ setting[0].title }} {% endblock %}
+{% block keywords %} {{ setting[0].keywords }} {% endblock %}
+{% block description %} {{ setting[0].description }} {% endblock %}
+
+
+{% block slider %}{% include('home/slider.html.twig') %}{% endblock %}
+
+
+
+{% block body %}
+
+<!-- Start Testimonial section -->
+    <section id="testimonial">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="title-area"style="margin-left: 250px">
+                                <h2 class="title">Last Comments</h2>
+                                <span class="line"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <!-- Start testimonial slider -->
+                            <div class="testimonial-slider" style="margin-left: 250px">
+                                {% for rs in comment %}
+                                <!-- Start single slider -->
+                                <div class="single-slider">
+                                    <div class="testimonial-img">
+                                        <img src="{{ asset ('uploads/images/' ~rs.image) }}" style="height: 130px; height: 90px" alt="testimonial image">
+                                    </div>
+                                    <div class="testimonial-content">
+                                        <a href="{{ path('home_notes_show', {'id': rs.noteid}) }}" style="color: white">
+                                        <p>{{ rs.name }} {{ rs.surname }}</p>
+                                        <p>{{ rs.subject }}</p>
+                                            <p>{{ rs.comment }}</p>
+                                        <p> <span>Rate :{{ rs.rate }}</span></p>
+                                        </a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+            </div>
+        </div>
+    </section>
+    <!-- End Testimonial section -->
+
+    <!-- Start latest news -->
+    <section id="latest-news">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title-area">
+                        <h2 class="title">Latest Notes</h2>
+                        <span class="line"></span>
+                        <p>Lastest Best Notes Here</p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="latest-news-content">
+                        <div class="row">
+                            {% for rs in notes %}
+                            <!-- start single latest news -->
+                            <div class="col-md-4">
+                                <article class="blog-news-single">
+                                    <div class="blog-news-img">
+                                        <a class="fancybox view-icon" data-fancybox-group="gallery" href="{{ asset ('uploads/images/' ~rs.image) }}">
+                                            <img src="{{ asset ('uploads/images/' ~rs.image) }}" alt="image">
+                                        </a>
+                                    </div>
+                                    <div class="blog-news-title">
+                                        <h2><a href="{{ path('home_notes_show', {'id': rs.id}) }}">{{rs.title}}</a></h2>
+                                        <p>{{ rs.university.name }}</p>
+                                        <p>{{ rs.description }}</p>
+                                    </div>
+                                </article>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End latest news -->
+
+<!-- Start counter -->
+    <section id="counter">
+        <div class="counter-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="counter-area" style="margin-left: 275px">
+                            <div class="row">
+                                <!-- Start single counter -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="single-counter">
+                                        <div class="counter-icon">
+                                            <i class="fa fa-trophy"></i>
+                                        </div>
+                                        <div class="counter-no counter">
+                                            11
+                                        </div>
+                                        <div class="counter-label">
+                                            Notes
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End single counter -->
+                                <!-- Start single counter -->
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="single-counter">
+                                        <div class="counter-icon">
+                                            <i class="fa fa-users"></i>
+                                        </div>
+                                        <div class="counter-no counter">
+                                            10
+                                        </div>
+                                        <div class="counter-label">
+                                            Clients
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End single counter -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End counter -->
+
+    <!-- Start Clients brand -->
+    <section id="clients-brand">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="clients-brand-area">
+                        <ul class="clients-brand-slide">
+                            <li class="col-md-5">
+                                <div class="single-brand">
+                                    <img src="{{ asset('assets') }}/images/sponsor1.jpg" style="width:120px; height: 60px" alt="img">
+                                </div>
+                            </li>
+                            <li class="col-md-5">
+                                <div class="single-brand">
+                                    <img src="{{ asset('assets') }}/images/sponsor2.png"style="width:120px; height: 60px" alt="img">
+                                </div>
+                            </li>
+                            <li class="col-md-5">
+                                <div class="single-brand">
+                                    <img src="{{ asset('assets') }}/images/sponsor3.jpg"style="width:120px; height: 60px" alt="img">
+                                </div>
+                            </li>
+                            <li class="col-md-5">
+                                <div class="single-brand">
+                                    <img src="{{ asset('assets') }}/images/sponsor4.jpg"style="width:120px; height: 60px" alt="img">
+                                </div>
+                            </li>
+                            <li class="col-md-5">
+                                <div class="single-brand">
+                                    <img src="{{ asset('assets') }}/images/sponsor5.png"style="width:120px; height: 60px" alt="img">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Clients brand -->
+{% endblock %}

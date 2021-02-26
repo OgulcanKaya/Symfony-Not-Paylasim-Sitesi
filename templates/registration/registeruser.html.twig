@@ -1,0 +1,57 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %} Register Page{% endblock %}
+
+{% block body %}
+
+
+    <section id="single-page-header">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-left">
+                            <h2>Register Page</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-right">
+                            <ol class="breadcrumb">
+                                <li><a href="/loginuser">Login Page</a></li>
+                                <li class="active">Register Page </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{ form_start(registrationForm) }}
+    <section id="blog-archive">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-15">
+                    <div class="blog-archive-area">
+                        <div class="row">
+                            <div class="col-md-5 hidden-sm hidden-xs" style="margin-left:350px;">
+                                <aside class="blog-side-bar">
+                                    {{ form_widget(registrationForm) }}
+                                    <table>
+                                        <td>
+                                            <div>
+                                                <button class="btn btn-primary btn-block">{{ button_label|default('Save') }}</button>
+                                            </div>
+                                        </td>
+                                    </table>
+
+                                    {{ form_end(registrationForm) }}
+                                </aside>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

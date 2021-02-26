@@ -1,0 +1,123 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ note.title }} {% endblock %}
+{% block keywords %} {{ note.keywords }} {% endblock %}
+{% block description %} {{ note.description }} {% endblock %}
+
+{% block body %}
+    <section id="single-page-header">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-left">
+                            <h2>{{ note.title }}</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-right">
+                            <ol class="breadcrumb">
+                                <li><a href="{{ path('home_notes_show', {'id': note.id}) }}">Turn Note Page</a></li>
+                                <li class="active">{{ note.description }}</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Start portfolio -->
+    <section id="portfolio">
+        <div class="portfolio-area">
+            <!-- Portfolio container -->
+            <div id="mixit-container" class="portfolio-container">
+
+                <div class="single-portfolio mix branding">
+                    <div class="single-item">
+                        <img src="{{ asset ('uploads/images/' ~note.image) }}" alt="img">
+                        <div class="single-item-content">
+                            <a class="fancybox view-icon" data-fancybox-group="gallery" href="{{ asset ('uploads/images/' ~note.image) }}"><i class="fa fa-search-plus"></i></a>
+                            <div class="portfolio-title">
+                                <h4>{{note.title}}</h4>
+                                <span>{{ note.description }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {% for rs in images %}
+
+                    <div class="single-portfolio mix branding">
+                        <div class="single-item">
+                            <img src="{{ asset ('uploads/images/' ~rs.image) }}" alt="img">
+                            <div class="single-item-content">
+                                <a class="fancybox view-icon" data-fancybox-group="gallery" href="{{ asset ('uploads/images/' ~rs.image) }}"><i class="fa fa-search-plus"></i></a>
+                                <div class="portfolio-title">
+                                    <h4>{{rs.title}}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section id="subscribe">
+        <div class="subscribe-overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="subscribe-area">
+                            <h2 class="wow fadeInUp">Leave Your Comments!</h2>
+                            <div class="col-md-12">
+                                {{ include('messages.html.twig')}}
+                                <div class="contact-area-right">
+                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                        <form action="{{ path('user_new_comment', {'id': note.id}) }}" method="post" name="comment" class="comments-form contact-form">
+                                            <div class="form-group">
+                                                <input type="text" id="comment_subject" name="comment[subject]" class="form-control" placeholder="Subject">
+                                            </div>
+                                            <div class="form-group">
+                                                <select id="comment_rate" name="comment[rate]"class="form-control">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <textarea placeholder="Leave Your Comment!" id="comment_comment" name="comment[comment]" rows="3" class="form-control"></textarea>
+                                            </div>
+
+                                            <input type="hidden" name="token" value="{{ csrf_token('comment') }}" />
+                                            <button class="comment-btn">Send Comment</button>
+                                        </form>
+                                    {% else %}
+                                        <li>
+                                            <a href="/loginuser"class="modal-title"><i class="fa fa-unlock-alt"> </i> <label style="color: #2bcdc1">if You want to add Comments please Login</label> </a>
+                                        </li>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+{% endblock %}
+
+
+
+

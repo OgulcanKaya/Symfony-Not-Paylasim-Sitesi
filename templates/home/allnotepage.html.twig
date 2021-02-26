@@ -1,0 +1,64 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ setting[0].title }}{% endblock %}
+{% block keywords %} {{ setting[0].keywords }}{% endblock %}
+{% block description %} {{ setting[0].description }} {% endblock %}
+
+{% block body %}
+    <section id="single-page-header">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-left">
+                            <h2>All Notes Here!</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-right">
+                            <ol class="breadcrumb">
+                                <li><a href="/">Home Page</a></li>
+                                <li class="active">Notes</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Start portfolio -->
+    <section id="portfolio">
+        <div class="portfolio-area">
+            <div id="mixit-container" class="portfolio-container">
+                <div class="col-md-12">
+                    <div class="latest-news-content">
+                        <div class="row">
+                            {% for rs in notes %}
+                                <!-- start single latest news -->
+                                <div class="col-md-4">
+                                    <article class="blog-news-single">
+                                        <div class="blog-news-img">
+                                            <a href="{{ path('home_notes_show', {'id': rs.id}) }}">
+                                                <img src="{{ asset ('uploads/images/' ~rs.image) }}" alt="image">
+                                            </a>
+                                        </div>
+                                        <div class="blog-news-title">
+                                            <h2><a href="{{ path('home_notes_show', {'id': rs.id}) }}">{{rs.title}}</a></h2>
+                                            <p>{{ rs.university.name }}</p>
+                                            <p> {{ rs.category.title }}</p>
+                                            <p>{{ rs.description }}</p>
+                                        </div>
+                                    </article>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+

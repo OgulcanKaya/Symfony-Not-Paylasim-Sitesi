@@ -1,0 +1,111 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %} {{ app.user.name }} Comments{% endblock %}
+
+{% block body %}
+
+
+    <section id="single-page-header">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-left">
+                            <h2>My Comments</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-right">
+                            <ol class="breadcrumb">
+                                <li><a href="/">Home</a></li>
+                                <li class="active">My Comments</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog-archive">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-15">
+                    <div class="blog-archive-area">
+                        <div class="row">
+                            <div class="col-md-2 hidden-sm hidden-xs">
+                                <aside class="blog-side-bar">
+
+                                    {% include('user/usermenu.html.twig') %}
+                                </aside>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="blog-archive-left">
+                                    <!-- Start blog news single -->
+                                    <article class="blog-news-single">
+
+                                        <div class="blog-news-title">
+                                            <h2>Your Comments</h2>
+                                            <div class="blog-news-details blog-single-details">
+
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr>
+
+                                                        <th>Subject</th>
+                                                        <th>Comment</th>
+                                                        <th>Status</th>
+                                                        <th>Note</th>
+                                                        <th>Rate</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for comment in comments %}
+                                                        <tr>
+
+                                                            <td>{{ comment.subject }}</td>
+                                                            <td>{{ comment.comment }}</td>
+                                                            <td>{{ comment.status }}</td>
+                                                            <td nowrap=""><a href="{{ path('user_notes_show', {'id': comment.noteid}) }}"> {{ comment.title }} </a></td>
+                                                            <td>{{ comment.rate }}</td>
+                                                            <td>
+
+                                                                <form method="post" action="{{ path('user_comment_delete', {'id': comment.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                                                    <input type="hidden" name="_method" value="DELETE">
+                                                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
+                                                                    <button class="btn btn-rounded btn-danger">Delete</button>
+                                                                </form>
+
+
+                                                            </td>
+
+                                                        </tr>
+                                                    {% else %}
+                                                        <tr>
+                                                            <td colspan="10">no records found</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+
+
+                                            </div>
+                                        </div>
+
+
+                                    </article>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}

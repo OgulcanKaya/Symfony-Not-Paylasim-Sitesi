@@ -1,0 +1,82 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %} {{ app.user.name }} Notes{% endblock %}
+
+{% block body %}
+
+
+
+
+    <section id="single-page-header">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-left">
+                            <h2>My Notes</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-right">
+                            <ol class="breadcrumb">
+                                <li><a href="/user">My Profile</a></li>
+                                <li class="active">My Notes</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog-archive">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-15">
+                    <div class="blog-archive-area">
+                        <div class="row">
+                            <div class="col-md-2 hidden-sm hidden-xs">
+                                <aside class="blog-side-bar">
+
+                                    {% include('user/usermenu.html.twig') %}
+                                </aside>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="blog-archive-left">
+                                    <!-- Start blog news single -->
+                                    <article class="blog-news-single">
+
+                                        <div class="blog-news-title">
+                                            <h2>Your Notes</h2>
+                                            <div class="blog-news-details blog-single-details">
+
+                                                 {{ include('notes/_form.html.twig') }}
+
+                                                <a href="{{ path('user_notes_index') }}" class="btn btn-rounded btn-primary">Back to List</a>
+
+
+
+
+                                            </div>
+                                        </div>
+
+
+                                    </article>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}
+
+
+
+

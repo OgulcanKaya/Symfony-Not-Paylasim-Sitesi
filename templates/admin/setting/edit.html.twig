@@ -1,0 +1,22 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Not Paylaşım Sitesi Admin Paneline Hoşgeldiniz!{% endblock %}
+
+{% block body %}
+
+<!-- wrapper  -->
+<!-- ============================================================== -->
+<div class="dashboard-wrapper">
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                {{ include('admin/setting/_form.html.twig', {'button_label': 'Update'}) }}
+
+                <a href="{{ path('admin_setting_index') }}" class="btn btn-rounded btn-primary">Back To List</a>
+
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

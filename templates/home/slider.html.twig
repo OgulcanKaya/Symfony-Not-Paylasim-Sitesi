@@ -1,0 +1,34 @@
+<section id="slider">
+
+    <div class="main-slider">
+        {% for rs in slider %}
+            <div class="single-slide">
+                <a href="{{ path('home_notes_show', {'id': rs.id}) }}">
+                    <img src="{{ asset ('uploads/images/' ~rs.image) }}" height="800" width="250" alt="img">
+
+                    <div class="slide-content">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="slide-article">
+                                        <h1 >{{rs.title}}</h1>
+                                        <p> {{ rs.university.name }}</p>
+                                        <p> {{ rs.category.title }}</p>
+                                        <p> {{ rs.description }}</p>
+                                        <p> {{ rs.detail|raw }}</p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+<!-- End slider -->

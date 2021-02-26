@@ -1,0 +1,31 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Edit Notes{% endblock %}
+
+{% block body %}
+
+<div class="dashboard-wrapper">
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+                <h1>Edit Notes </h1>
+
+                {{ include('admin/notes/_form.html.twig', {'button_label': 'Update'}) }}
+
+                <table>
+                    <tr><a href="{{ path('admin_notes_index') }}" class="btn btn-rounded btn-primary">Back To List</a></tr>
+                    <tr> {{ include('admin/notes/_delete_form.html.twig') }}</tr>
+                </table>
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}

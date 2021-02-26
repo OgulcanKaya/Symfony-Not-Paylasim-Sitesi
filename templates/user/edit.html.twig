@@ -1,0 +1,73 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %} {{ app.user.name }} Profile{% endblock %}
+
+{% block body %}
+
+
+    <section id="single-page-header">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-left">
+                            <h2>My Profile</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="single-page-header-right">
+                            <ol class="breadcrumb">
+                                <li><a href="/">Home</a></li>
+                                <li class="active"><a href="/user">My Profile </a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Start blog archive -->
+    <section id="blog-archive">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-15">
+                    <div class="blog-archive-area">
+                        <div class="row">
+                            <div class="col-md-2 hidden-sm hidden-xs">
+                                <aside class="blog-side-bar">
+                                    <!-- Start sidebar widget -->
+
+                                    <!-- Start sidebar widget -->
+                                    {% include('user/usermenu.html.twig') %}
+                                </aside>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="blog-archive-left">
+                                    <!-- Start blog news single -->
+                                    <article class="blog-news-single">
+
+                                        <div class="blog-news-title">
+                                            <h2>Edit Your Profile</h2>
+
+                                            {{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+
+                                        </div>
+                                        <div class="blog-news-details blog-single-details">
+
+
+                                        </div>
+                                    </article>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+{% endblock %}

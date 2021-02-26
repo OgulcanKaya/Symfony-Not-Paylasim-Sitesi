@@ -1,0 +1,22 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}New Category{% endblock %}
+
+{% block body %}
+<!-- wrapper  -->
+<!-- ============================================================== -->
+<div class="dashboard-wrapper">
+    <div class="container-fluid dashboard-content">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+
+
+                <h1>Create new University</h1>
+
+                {{ include('admin/university/_form.html.twig') }}
+
+                <a href="{{ path('admin_university_index') }}"class="btn btn-rounded btn-primary">Back to List</a>
+            </div
+        </div>
+    </div>
+    {% endblock %}

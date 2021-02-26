@@ -1,0 +1,13 @@
+<div class="sidebar-widget">
+    <h4 class="widget-title">User Menu</h4>
+    <ul class="widget-catg">
+
+        <img src="{{ asset('/uploads/images/' ~app.user.image) }}" alt="User Avatar" style="height: 50px" class="mr-3 img-circle">  {{ app.user.name }}  {{ app.user.surname }}
+
+        <li><a href="/user">My Profile</a></li>
+        <li><a href="/user/notes">My Notes</a></li>
+        <li><a href="/user/comments">My Comments</a></li>
+        <li><a href="/logout">Logout</a></li>
+
+    </ul>
+</div>

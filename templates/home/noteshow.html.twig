@@ -1,0 +1,124 @@
+{% extends 'homebase.html.twig' %}
+
+{% block title %}{{ note.title }} {% endblock %}
+{% block keywords %} {{ note.keywords }} {% endblock %}
+{% block description %} {{ note.description }} {% endblock %}
+
+{% block body %}
+            <section id="single-page-header">
+                <div class="overlay">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="single-page-header-left">
+                                    <h2>{{ note.title }}</h2>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div class="single-page-header-right">
+                                    <ol class="breadcrumb">
+                                        <li><a href="/notespage">All Notes</a></li>
+                                        <li class="active">{{ note.description }}</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="blog-archive">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-15">
+                            <div class="blog-archive-area">
+                                <div class="row">
+                                    <div class="col-md-2 hidden-sm hidden-xs">
+                                        <aside class="blog-side-bar">
+
+                                        </aside>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="blog-archive-left">
+                                            <!-- Start blog news single -->
+                                            <article class="blog-news-single">
+
+                                                <div class="blog-news-title">
+                                                    <h2>{{ note.title }}</h2>
+                                                    <div class="blog-news-details blog-single-details">
+                                                        <table class="table">
+                                                            <tbody>
+
+                                                            <tr>
+                                                                <th>Note's Description</th>
+                                                                <td>{{ note.description }}</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <th>University</th>
+                                                                <td>{{ note.university.name}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Category</th>
+                                                                <td>{{ note.category.title }}</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <th>Pdf</th>
+                                                                <td><a href="{{ asset ('uploads/pdf/' ~note.pdf)}}"> Burdan indirebilirsiniz!</a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Image</th>
+                                                                <td><img src="{{ asset ('uploads/images/' ~note.image) }}" height="300"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th>Detail</th>
+                                                                <td>{{ note.detail|raw }}</td>
+                                                            </tr>
+
+
+                                                            </tbody>
+                                                        </table>
+                                                        <a href="{{ path('home_galerry_show', {'id': note.id}) }}" class="comment-btn">Show More Note!</a>
+
+                                                    </div>
+                                                </div>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed" aria-expanded="false">
+                            Comments About Note <span class="fa fa-plus-square"></span>
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" aria-expanded="false" style="height: 15px;">
+                    <div class="panel-body">
+                        {% for rs in comments %}
+                            <p>
+                           Subject:  <h5>{{ rs.subject }} Note's Rate :{{ rs.rate }}</h5>
+                            </p>
+
+                            <p>
+                            Comments:  {{ rs.comment }}
+                            </p>
+                            <hr>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}
+
+
+
+
