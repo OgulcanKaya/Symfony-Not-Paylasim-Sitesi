@@ -63,6 +63,9 @@ class Category
      */
     private $updated_at;
 
+
+     private $deleted_at;
+
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Admin\Notes", mappedBy="category")
      */
