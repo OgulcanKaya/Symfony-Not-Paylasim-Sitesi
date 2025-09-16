@@ -143,6 +143,7 @@ class HomeController extends AbstractController
                 //******************************SEND EMAİL**************************************//
 
                 return $this->redirectToRoute('home_contact');
+            //******************************SEND EMAİL FINISH**************************************//
             }
         }
 
